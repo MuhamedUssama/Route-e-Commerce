@@ -4,11 +4,11 @@ import 'package:e_commerce/domain/models/brands/brands.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: BrandsDataSource)
-class BrandsDataSourceImpl implements BrandsDataSource {
+class BrandsOnlineDataSource implements BrandsDataSource {
   ApiManager apiManager;
 
   @factoryMethod
-  BrandsDataSourceImpl(this.apiManager);
+  BrandsOnlineDataSource(this.apiManager);
 
   @override
   Future<List<Brand>?> getBrands() async {

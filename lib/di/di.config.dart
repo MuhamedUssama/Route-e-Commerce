@@ -36,7 +36,7 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.singleton<_i3.ApiManager>(() => _i3.ApiManager());
     gh.factory<_i4.BrandsDataSource>(
-        () => _i5.BrandsDataSourceImpl(gh<_i3.ApiManager>()));
+        () => _i5.BrandsOnlineDataSource(gh<_i3.ApiManager>()));
     gh.factory<_i6.BrandsRepositoryContract>(
         () => _i7.BrandsRepositoryImpl(gh<_i4.BrandsDataSource>()));
     gh.factory<_i8.CategoryDataSource>(
