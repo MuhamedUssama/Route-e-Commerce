@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import 'ui/tabs/home_tab/home_tab.dart';
 
 void main() {
   runApp(const ECommerce());
@@ -14,7 +14,7 @@ class ECommerce extends StatelessWidget {
     return const MaterialApp(
       title: 'Route E-Commerce',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: HomeTab(),
     );
   }
 }
