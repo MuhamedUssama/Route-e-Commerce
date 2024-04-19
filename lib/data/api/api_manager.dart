@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
 @singleton
+@injectable
 class ApiManager {
   static const String baseUrl = "ecommerce.routemisr.com";
 

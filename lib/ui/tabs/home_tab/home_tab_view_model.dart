@@ -1,10 +1,13 @@
 import 'package:e_commerce/domain/models/categories/category.dart';
 import 'package:e_commerce/domain/use_cases/get_categories_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class HomeTabViewModel extends Cubit<HomeTabStates> {
   GetCategoriesUseCase getCategoriesUseCase;
 
+  @factoryMethod
   HomeTabViewModel(this.getCategoriesUseCase) : super(LoadingState());
 
   void initPage() async {
