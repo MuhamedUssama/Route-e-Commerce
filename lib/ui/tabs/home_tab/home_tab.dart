@@ -1,9 +1,11 @@
 import 'package:e_commerce/di/di.dart';
+import 'package:e_commerce/domain/models/brands/brands.dart';
 import 'package:e_commerce/domain/models/categories/category.dart';
 import 'package:e_commerce/ui/tabs/home_tab/home_tab_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'widgets/home_brand_widget.dart';
 import 'widgets/home_category_widget.dart';
 
 class HomeTab extends StatefulWidget {
@@ -33,7 +35,8 @@ class _HomeTabState extends State<HomeTab> {
       },
       builder: (context, state) {
         if (state is SuccessState) {
-          return buildSuccessWidget(state.categoryList ?? []);
+          return buildSuccessWidget(
+              state.categoryList ?? [], state.brandList ?? []);
         }
         return Scaffold(
           appBar: AppBar(title: const Text('Defult Screen')),
@@ -56,7 +59,8 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 
-  Widget buildSuccessWidget(List<Category>? categoryList) {
+  Widget buildSuccessWidget(
+      List<Category>? categoryList, List<Brand>? brandsList) {
     return Scaffold(
       appBar: AppBar(title: const Text("Route eCommerce")),
       body: Column(
@@ -70,6 +74,17 @@ class _HomeTabState extends State<HomeTab> {
                 return HomeCategoryWidget(categoryList: categoryList[index]);
               },
               itemCount: categoryList!.length,
+            ),
+          ),
+          Expanded(
+            child: GridView.builder(
+              scrollDirection: Axis.horizontal,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemBuilder: (context, index) {
+                return HomeBrandWidget(brand: brandsList[index]);
+              },
+              itemCount: brandsList!.length,
             ),
           ),
         ],
