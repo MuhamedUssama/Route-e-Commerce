@@ -1,14 +1,21 @@
 import 'package:e_commerce/domain/models/categories/category.dart';
-import 'package:e_commerce/domain/repository/category_repository_contract.dart';
+import 'package:e_commerce/domain/use_cases/get_categories_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeTabViewModel extends Cubit<HomeTabStates> {
-  CategoryRpositoryContract categoryRpositoryContract;
+  GetCategoriesUseCase getCategoriesUseCase;
 
-  HomeTabViewModel(this.categoryRpositoryContract) : super(LoadingState());
+  HomeTabViewModel(this.getCategoriesUseCase) : super(LoadingState());
 
-  void initPage() {
+  void initPage() async {
     emit(LoadingState());
+
+    try {
+      var categories = await getCategoriesUseCase.invoke();
+      emit(SuccessState(categories));
+    } catch (error) {
+      emit(ErrorState(error.toString()));
+    }
   }
 }
 
