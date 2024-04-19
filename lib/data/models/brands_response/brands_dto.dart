@@ -1,3 +1,5 @@
+import 'package:e_commerce/domain/models/brands/brands.dart';
+
 class BrandsDto {
   BrandsDto({
     this.id,
@@ -47,5 +49,14 @@ class BrandsDto {
     map['createdAt'] = createdAt;
     map['updatedAt'] = updatedAt;
     return map;
+  }
+
+  Brand toBrand() {
+    return Brand(
+      id: id,
+      name: name,
+      image: image,
+      slug: slug,
+    );
   }
 }

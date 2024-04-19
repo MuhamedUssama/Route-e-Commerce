@@ -1,6 +1,5 @@
-import 'package:e_commerce/data/models/pagenation_dto.dart';
-
 import 'brands_dto.dart';
+import 'package:e_commerce/data/models/pagenation_dto.dart';
 
 class BrandsResponse {
   int? results;

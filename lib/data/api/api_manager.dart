@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_commerce/data/models/brands_response/brands_response.dart';
 import 'package:e_commerce/data/models/categories_response/categories_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
@@ -15,5 +16,13 @@ class ApiManager {
     var json = jsonDecode(response.body);
     CategoriesResponse categoriesResponse = CategoriesResponse.fromJson(json);
     return categoriesResponse;
+  }
+
+  Future<BrandsResponse> getAllBrands() async {
+    Uri url = Uri.https(baseUrl, "api/v1/brands");
+    http.Response response = await http.get(url);
+    var json = jsonDecode(response.body);
+    BrandsResponse brandsResponce = BrandsResponse.fromJson(json);
+    return brandsResponce;
   }
 }
