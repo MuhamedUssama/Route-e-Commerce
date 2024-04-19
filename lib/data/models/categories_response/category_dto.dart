@@ -1,3 +1,5 @@
+import 'package:e_commerce/domain/models/categories/category.dart';
+
 class CategoryDto {
   CategoryDto({
     this.id,
@@ -47,5 +49,14 @@ class CategoryDto {
     map['createdAt'] = createdAt;
     map['updatedAt'] = updatedAt;
     return map;
+  }
+
+  Category toCategory() {
+    return Category(
+      id: id,
+      name: name,
+      image: image,
+      slug: slug,
+    );
   }
 }
