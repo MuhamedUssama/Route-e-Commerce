@@ -63,28 +63,39 @@ class _HomeTabState extends State<HomeTab> {
       List<Category>? categoryList, List<Brand>? brandsList) {
     return Scaffold(
       appBar: AppBar(title: const Text("Route eCommerce")),
-      body: Column(
-        children: [
-          Expanded(
-            child: GridView.builder(
-              scrollDirection: Axis.horizontal,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                return HomeCategoryWidget(categoryList: categoryList[index]);
-              },
-              itemCount: categoryList!.length,
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: SizedBox.fromSize(
+              size: const Size.fromHeight(120),
+              child: SliverGrid(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return HomeCategoryWidget(
+                        categoryList: categoryList[index]);
+                  },
+                  childCount: categoryList!.length,
+                ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+              ),
             ),
           ),
-          Expanded(
-            child: GridView.builder(
-              scrollDirection: Axis.horizontal,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                return HomeBrandWidget(brand: brandsList[index]);
-              },
-              itemCount: brandsList!.length,
+          SliverToBoxAdapter(
+            child: SizedBox.fromSize(
+              size: const Size.fromHeight(120),
+              child: SliverGrid(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return HomeBrandWidget(brand: brandsList[index]);
+                  },
+                  childCount: brandsList!.length,
+                ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+              ),
             ),
           ),
         ],
