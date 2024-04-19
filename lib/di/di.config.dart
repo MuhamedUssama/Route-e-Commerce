@@ -20,8 +20,9 @@ import '../data/repository_impl/brands_repository_impl.dart' as _i7;
 import '../data/repository_impl/category_repository_impl.dart' as _i11;
 import '../domain/repository/brand_repository_contract.dart' as _i6;
 import '../domain/repository/category_repository_contract.dart' as _i10;
-import '../domain/use_cases/get_categories_usecase.dart' as _i12;
-import '../ui/tabs/home_tab/home_tab_view_model.dart' as _i13;
+import '../domain/use_cases/get_brands_usecase.dart' as _i12;
+import '../domain/use_cases/get_categories_usecase.dart' as _i13;
+import '../ui/tabs/home_tab/home_tab_view_model.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,10 +44,14 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i9.CategoryOnlineDataSource(gh<_i3.ApiManager>()));
     gh.factory<_i10.CategoryRpositoryContract>(
         () => _i11.CategoryRepositoryImpl(gh<_i8.CategoryDataSource>()));
-    gh.factory<_i12.GetCategoriesUseCase>(
-        () => _i12.GetCategoriesUseCase(gh<_i10.CategoryRpositoryContract>()));
-    gh.factory<_i13.HomeTabViewModel>(
-        () => _i13.HomeTabViewModel(gh<_i12.GetCategoriesUseCase>()));
+    gh.factory<_i12.GetBrandsUseCase>(
+        () => _i12.GetBrandsUseCase(gh<_i6.BrandsRepositoryContract>()));
+    gh.factory<_i13.GetCategoriesUseCase>(
+        () => _i13.GetCategoriesUseCase(gh<_i10.CategoryRpositoryContract>()));
+    gh.factory<_i14.HomeTabViewModel>(() => _i14.HomeTabViewModel(
+          gh<_i13.GetCategoriesUseCase>(),
+          gh<_i12.GetBrandsUseCase>(),
+        ));
     return this;
   }
 }
