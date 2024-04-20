@@ -67,15 +67,13 @@ class _HomeTabState extends State<HomeTab> {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: const Size.fromHeight(120),
-              child: SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return HomeCategoryWidget(
-                        categoryList: categoryList[index]);
-                  },
-                  childCount: categoryList!.length,
-                ),
+              size: Size.fromHeight(MediaQuery.of(context).size.height * 0.3),
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return HomeCategoryWidget(categoryList: categoryList[index]);
+                },
+                itemCount: categoryList!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
@@ -84,14 +82,13 @@ class _HomeTabState extends State<HomeTab> {
           ),
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: const Size.fromHeight(120),
-              child: SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return HomeBrandWidget(brand: brandsList[index]);
-                  },
-                  childCount: brandsList!.length,
-                ),
+              size: Size.fromHeight(MediaQuery.of(context).size.height * 0.2),
+              child: GridView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return HomeBrandWidget(brand: brandsList[index]);
+                },
+                itemCount: brandsList!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),

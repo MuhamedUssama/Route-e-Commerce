@@ -8,18 +8,19 @@ class HomeBrandWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
         CachedNetworkImage(
-          height: 124,
-          width: 124,
+          height: height * 0.1,
+          width: width * 0.2,
           imageUrl: brand.image ?? "",
           placeholder: (context, url) =>
               const Center(child: CircularProgressIndicator()),
           errorWidget: (context, url, error) =>
               const Center(child: Icon(Icons.error)),
         ),
-        Text(brand.name ?? ""),
       ],
     );
   }
