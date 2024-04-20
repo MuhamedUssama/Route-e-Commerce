@@ -1,7 +1,8 @@
 import 'package:e_commerce/di/di.dart';
 import 'package:e_commerce/domain/models/brands/brands.dart';
 import 'package:e_commerce/domain/models/categories/category.dart';
-import 'package:e_commerce/ui/tabs/home_tab/home_tab_view_model.dart';
+import 'package:e_commerce/ui/screens/tabs/home_tab/home_tab_view_model.dart';
+import 'package:e_commerce/ui/screens/tabs/home_tab/widgets/custom_head_list_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -67,31 +68,57 @@ class _HomeTabState extends State<HomeTab> {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: const Size.fromHeight(260),
-              child: GridView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return HomeCategoryWidget(categoryList: categoryList[index]);
-                },
-                itemCount: categoryList!.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
+              size: const Size.fromHeight(316),
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CustomHeadListRow(listHeadName: "Cotegories"),
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return HomeCategoryWidget(
+                            categoryList: categoryList[index]);
+                      },
+                      itemCount: categoryList!.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 24),
+          ),
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: const Size.fromHeight(200),
-              child: GridView.builder(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return HomeBrandWidget(brand: brandsList[index]);
-                },
-                itemCount: brandsList!.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
+              size: const Size.fromHeight(224),
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: CustomHeadListRow(listHeadName: "Brands"),
+                  ),
+                  Expanded(
+                    child: GridView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return HomeBrandWidget(brand: brandsList[index]);
+                      },
+                      itemCount: brandsList!.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

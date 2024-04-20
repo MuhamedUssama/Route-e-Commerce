@@ -11,7 +11,7 @@ class HomeBrandWidget extends StatelessWidget {
     return Column(
       children: [
         CachedNetworkImage(
-          height: 100,
+          height: 50,
           width: 200,
           imageUrl: brand.image ?? "",
           placeholder: (context, url) =>

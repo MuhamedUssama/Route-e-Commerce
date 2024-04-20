@@ -22,7 +22,7 @@ import '../domain/repository/brand_repository_contract.dart' as _i6;
 import '../domain/repository/category_repository_contract.dart' as _i10;
 import '../domain/use_cases/get_brands_usecase.dart' as _i12;
 import '../domain/use_cases/get_categories_usecase.dart' as _i13;
-import '../ui/tabs/home_tab/home_tab_view_model.dart' as _i14;
+import '../ui/screens/tabs/home_tab/home_tab_view_model.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
