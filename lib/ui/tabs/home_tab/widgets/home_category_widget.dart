@@ -8,13 +8,11 @@ class HomeCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
         CachedNetworkImage(
-          height: height * 0.12,
-          width: width * 0.22,
+          height: 100,
+          width: 200,
           imageBuilder: (context, imageProvider) {
             return Container(
               decoration: BoxDecoration(

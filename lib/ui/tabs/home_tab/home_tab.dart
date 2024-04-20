@@ -67,7 +67,7 @@ class _HomeTabState extends State<HomeTab> {
         slivers: [
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: Size.fromHeight(MediaQuery.of(context).size.height * 0.3),
+              size: const Size.fromHeight(260),
               child: GridView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
@@ -82,7 +82,7 @@ class _HomeTabState extends State<HomeTab> {
           ),
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: Size.fromHeight(MediaQuery.of(context).size.height * 0.2),
+              size: const Size.fromHeight(200),
               child: GridView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
