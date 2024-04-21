@@ -1,3 +1,5 @@
+import 'package:e_commerce/domain/models/sun_categories/sub_categories.dart';
+
 class SubCategoriesDto {
   SubCategoriesDto({
     this.id,
@@ -47,5 +49,14 @@ class SubCategoriesDto {
     map['createdAt'] = createdAt;
     map['updatedAt'] = updatedAt;
     return map;
+  }
+
+  SubCategory toSubCategory() {
+    return SubCategory(
+      id: id,
+      name: name,
+      slug: slug,
+      category: category,
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:e_commerce/data/models/brands_response/brands_dto.dart';
 import 'package:e_commerce/data/models/categories_response/category_dto.dart';
+import 'package:e_commerce/domain/models/products/products.dart';
 
 import '../sub_categories_response/sub_categories_dto.dart';
 
@@ -127,5 +128,24 @@ class ProductDto {
     map['updatedAt'] = updatedAt;
     map['id'] = id;
     return map;
+  }
+
+  Product toProduct() {
+    return Product(
+      id: id,
+      sold: sold,
+      title: title,
+      slug: slug,
+      imageCover: imageCover,
+      images: images,
+      price: price,
+      description: description,
+      quantity: quantity,
+      ratingsQuantity: ratingsQuantity,
+      ratingsAverage: ratingsAverage,
+      category: category?.toCategory(),
+      brand: brand?.toBrand(),
+      // subcategory: subcategory?.toSubCategory(),
+    );
   }
 }
