@@ -1,7 +1,9 @@
 import 'package:e_commerce/domain/models/brands/brands.dart';
 import 'package:e_commerce/domain/models/categories/category.dart';
+import 'package:e_commerce/domain/models/products/products.dart';
 import 'package:e_commerce/domain/use_cases/get_brands_usecase.dart';
 import 'package:e_commerce/domain/use_cases/get_categories_usecase.dart';
+import 'package:e_commerce/domain/use_cases/get_most_selling_products_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,10 +11,14 @@ import 'package:injectable/injectable.dart';
 class HomeTabViewModel extends Cubit<HomeTabStates> {
   GetCategoriesUseCase getCategoriesUseCase;
   GetBrandsUseCase getBrandsUseCase;
+  GetMostSellingProductsUseCase mostSellingProducts;
 
   @factoryMethod
-  HomeTabViewModel(this.getCategoriesUseCase, this.getBrandsUseCase)
-      : super(LoadingState());
+  HomeTabViewModel(
+    this.getCategoriesUseCase,
+    this.getBrandsUseCase,
+    this.mostSellingProducts,
+  ) : super(LoadingState());
 
   void initPage() async {
     emit(LoadingState());
@@ -20,7 +26,9 @@ class HomeTabViewModel extends Cubit<HomeTabStates> {
     try {
       var categories = await getCategoriesUseCase.invoke();
       var brands = await getBrandsUseCase.invoke();
-      emit(SuccessState(categories, brands));
+      var products = await mostSellingProducts.invoke();
+
+      emit(SuccessState(categories, brands, products));
     } catch (error) {
       emit(ErrorState(error.toString()));
     }
@@ -39,5 +47,6 @@ class ErrorState extends HomeTabStates {
 class SuccessState extends HomeTabStates {
   List<Category>? categoryList;
   List<Brand>? brandList;
-  SuccessState(this.categoryList, this.brandList);
+  List<Product>? productList;
+  SuccessState(this.categoryList, this.brandList, this.productList);
 }
