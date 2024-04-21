@@ -145,7 +145,9 @@ class ProductDto {
       ratingsAverage: ratingsAverage,
       category: category?.toCategory(),
       brand: brand?.toBrand(),
-      // subcategory: subcategory?.toSubCategory(),
+      subcategory: subcategory
+          ?.map((subCategoryDto) => subCategoryDto.toSubCategory())
+          .toList(),
     );
   }
 }
