@@ -11,15 +11,14 @@ class HomeBrandWidget extends StatelessWidget {
     return Column(
       children: [
         CachedNetworkImage(
-          height: 124,
-          width: 124,
+          height: 50,
+          width: 200,
           imageUrl: brand.image ?? "",
           placeholder: (context, url) =>
               const Center(child: CircularProgressIndicator()),
           errorWidget: (context, url, error) =>
               const Center(child: Icon(Icons.error)),
         ),
-        Text(brand.name ?? ""),
       ],
     );
   }
