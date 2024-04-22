@@ -63,7 +63,7 @@ class ProductDto {
   String? imageCover;
   CategoryDto? category;
   BrandsDto? brand;
-  double? ratingsAverage;
+  num? ratingsAverage;
   String? createdAt;
   String? updatedAt;
   ProductDto copyWith({
@@ -80,7 +80,7 @@ class ProductDto {
     String? imageCover,
     CategoryDto? category,
     BrandsDto? brand,
-    double? ratingsAverage,
+    num? ratingsAverage,
     String? createdAt,
     String? updatedAt,
   }) =>

@@ -16,7 +16,7 @@ class Product {
   String? imageCover;
   Category? category;
   Brand? brand;
-  double? ratingsAverage;
+  num? ratingsAverage;
   String? id;
 
   Product({
@@ -75,7 +75,7 @@ class Product {
     String? imageCover,
     Category? category,
     Brand? brand,
-    double? ratingsAverage,
+    num? ratingsAverage,
     String? id,
   }) =>
       Product(
