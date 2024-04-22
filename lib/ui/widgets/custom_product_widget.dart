@@ -21,12 +21,13 @@ class CustomProductWidget extends StatelessWidget {
     return SizedBox(
       width: 260,
       height: 280,
-      child: Card(
-        color: Colors.white,
+      child: Container(
+        width: double.infinity,
         margin: const EdgeInsets.all(8),
-        shape: ContinuousRectangleBorder(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-          side: BorderSide(
+          color: Colors.white,
+          border: Border.all(
             width: 2,
             color: AppColors.primaryolor.withOpacity(0.5),
           ),
@@ -35,13 +36,22 @@ class CustomProductWidget extends StatelessWidget {
           children: [
             Expanded(
               flex: 1,
-              child: CachedNetworkImage(
-                imageUrl: product.imageCover ?? "",
-                fit: BoxFit.fill,
-                placeholder: (context, url) =>
-                    const Center(child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) =>
-                    const Center(child: Icon(Icons.error)),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageCover ?? "",
+                    fit: BoxFit.fill,
+                    placeholder: (context, url) =>
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Center(child: Icon(Icons.error)),
+                  ),
+                ),
               ),
             ),
             Expanded(

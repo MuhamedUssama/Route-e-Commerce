@@ -4,7 +4,6 @@ import 'package:e_commerce/domain/models/categories/category.dart';
 import 'package:e_commerce/domain/models/products/products.dart';
 import 'package:e_commerce/ui/screens/tabs/home_tab/home_tab_view_model.dart';
 import 'package:e_commerce/ui/screens/tabs/home_tab/widgets/custom_head_list_row.dart';
-import 'package:e_commerce/ui/theme/app_colors.dart';
 import 'package:e_commerce/ui/widgets/custom_product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -133,7 +132,7 @@ class _HomeTabState extends State<HomeTab> {
           ),
           SliverToBoxAdapter(
             child: SizedBox.fromSize(
-              size: const Size.fromHeight(380),
+              size: Size.fromHeight(400),
               child: Column(
                 children: [
                   const Padding(
