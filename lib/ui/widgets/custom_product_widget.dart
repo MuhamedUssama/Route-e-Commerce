@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/domain/models/products/products.dart';
-import 'package:e_commerce/ui/theme/app_colors.dart';
+import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductWidget extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:e_commerce/ui/theme/app_colors.dart';
+import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomHeadListRow extends StatelessWidget {

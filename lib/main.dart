@@ -1,8 +1,7 @@
 import 'package:e_commerce/di/di.dart';
-import 'package:e_commerce/ui/theme/app_colors.dart';
+import 'package:e_commerce/ui/screens/tabs/main_screen.dart';
+import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import 'ui/screens/tabs/home_tab/home_tab.dart';
 
 void main() {
   configureDependencies();
@@ -21,7 +20,10 @@ class ECommerce extends StatelessWidget {
         colorScheme: const ColorScheme.light(primary: AppColors.primaryolor),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeTab(),
+      routes: {
+        MainScreen.routeName: (context) => MainScreen(),
+      },
+      initialRoute: MainScreen.routeName,
     );
   }
 }
