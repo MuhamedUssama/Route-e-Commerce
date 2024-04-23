@@ -18,7 +18,7 @@ class ECommerce extends StatelessWidget {
       theme: AppTheme.lightThemeData,
       debugShowCheckedModeBanner: false,
       routes: {
-        MainScreen.routeName: (context) => MainScreen(),
+        MainScreen.routeName: (context) => const MainScreen(),
       },
       initialRoute: MainScreen.routeName,
     );
