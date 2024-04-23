@@ -1,6 +1,5 @@
 import 'package:e_commerce/di/di.dart';
 import 'package:e_commerce/ui/screens/tabs/main_screen.dart';
-import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:e_commerce/ui/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
