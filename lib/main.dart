@@ -1,6 +1,6 @@
 import 'package:e_commerce/di/di.dart';
-import 'package:e_commerce/ui/screens/tabs/main_screen.dart';
-import 'package:e_commerce/ui/utils/theme/app_colors.dart';
+import 'package:e_commerce/ui/utils/routes/app_routes.dart';
+import 'package:e_commerce/ui/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,15 +15,10 @@ class ECommerce extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Route E-Commerce',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: const ColorScheme.light(primary: AppColors.primaryolor),
-      ),
+      theme: AppTheme.lightThemeData,
       debugShowCheckedModeBanner: false,
-      routes: {
-        MainScreen.routeName: (context) => MainScreen(),
-      },
-      initialRoute: MainScreen.routeName,
+      routes: AppRoutes.routes,
+      initialRoute: AppRoutes.initialRoute,
     );
   }
 }
