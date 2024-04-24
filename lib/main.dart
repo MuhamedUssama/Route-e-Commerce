@@ -1,5 +1,5 @@
 import 'package:e_commerce/di/di.dart';
-import 'package:e_commerce/ui/screens/tabs/main_screen.dart';
+import 'package:e_commerce/ui/utils/routes/app_routes.dart';
 import 'package:e_commerce/ui/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +17,8 @@ class ECommerce extends StatelessWidget {
       title: 'Route E-Commerce',
       theme: AppTheme.lightThemeData,
       debugShowCheckedModeBanner: false,
-      routes: {
-        MainScreen.routeName: (context) => const MainScreen(),
-      },
-      initialRoute: MainScreen.routeName,
+      routes: AppRoutes.routes,
+      initialRoute: AppRoutes.initialRoute,
     );
   }
 }
