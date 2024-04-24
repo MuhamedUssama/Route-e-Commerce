@@ -52,6 +52,7 @@ class _MainScreenState extends State<MainScreen> {
         return Scaffold(
           body: bodyWidget,
           bottomNavigationBar: BottomNavigationBar(
+            showSelectedLabels: false,
             currentIndex: selectedIndex,
             onTap: (index) {
               viewModel.onTabClick(index);
