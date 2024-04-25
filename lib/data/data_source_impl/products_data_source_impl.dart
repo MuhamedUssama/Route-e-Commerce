@@ -12,8 +12,10 @@ class ProductDataSourceImpl implements ProductsDataSource {
   ProductDataSourceImpl(this.apiManager);
 
   @override
-  Future<List<Product>?> getProducts({ProductSort? sortBy}) async {
-    var response = await apiManager.getAllProducts(sort: sortBy);
+  Future<List<Product>?> getProducts(
+      ProductSort? sortBy, String? subCategoryId) async {
+    var response = await apiManager.getAllProducts(
+        sort: sortBy, subCategoryId: subCategoryId);
     var prouductResponse =
         response.data?.map((productDto) => productDto.toProduct()).toList();
     return prouductResponse;

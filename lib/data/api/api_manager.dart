@@ -29,11 +29,21 @@ class ApiManager {
     return brandsResponce;
   }
 
-  Future<ProductResponse> getAllProducts({ProductSort? sort}) async {
+  Future<ProductResponse> getAllProducts({
+    ProductSort? sort,
+    String? subCategoryId,
+    String? categoryId,
+    String? brandId,
+  }) async {
     Map<String, dynamic> params = {};
     if (sort != null) {
       params["sort"] = sort.value;
     }
+
+    if (subCategoryId != null) {
+      params["subcategory"] = subCategoryId;
+    }
+
     Uri url = Uri.https(baseUrl, "/api/v1/products", params);
     http.Response response = await http.get(url);
     var json = jsonDecode(response.body);
