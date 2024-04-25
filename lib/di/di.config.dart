@@ -27,7 +27,7 @@ import '../domain/repository/product_repository_contract.dart' as _i18;
 import '../domain/use_cases/get_brands_usecase.dart' as _i12;
 import '../domain/use_cases/get_categories_usecase.dart' as _i13;
 import '../domain/use_cases/get_most_selling_products_usecase.dart' as _i20;
-import '../ui/screens/tabs/categories_tab/cubit/sub_categories/categories_tab_view_model.dart'
+import '../ui/screens/tabs/categories_tab/cubit/categories/categories_tab_view_model.dart'
     as _i17;
 import '../ui/screens/tabs/home_tab/home_tab_view_model.dart' as _i21;
 import '../ui/screens/tabs/main_screen_view_model.dart' as _i14;

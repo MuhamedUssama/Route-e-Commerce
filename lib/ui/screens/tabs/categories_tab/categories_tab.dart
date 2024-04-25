@@ -1,6 +1,6 @@
 import 'package:e_commerce/di/di.dart';
-import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/sub_categories/categories_tab_states.dart';
-import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/sub_categories/categories_tab_view_model.dart';
+import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/categories/categories_tab_states.dart';
+import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/categories/categories_tab_view_model.dart';
 import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
