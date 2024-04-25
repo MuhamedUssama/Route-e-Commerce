@@ -1,6 +1,6 @@
 import '../brands/brands.dart';
 import '../categories/category.dart';
-import '../sun_categories/sub_categories.dart';
+import '../sub_categories/sub_categories.dart';
 
 class Product {
   int? sold;
