@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubits/sub_categories/sub_categories_on_category_states.dart';
 import 'widgets/category_clicked_tab.dart';
+import 'widgets/custom_sub_category_widget.dart';
 
 class CategoriesTab extends StatefulWidget {
   const CategoriesTab({super.key});
@@ -109,12 +110,16 @@ class _CategoriesTabState extends State<CategoriesTab> {
                   child: Column(
                     children: [
                       Expanded(
-                        child: ListView.builder(
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 8,
+                          ),
                           itemBuilder: (context, index) {
-                            return Text(
-                              state.subCategories![index].name ?? "",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 24),
+                            return CustomSubCategoryWidget(
+                              subCategory: state.subCategories![index],
                             );
                           },
                           itemCount: state.subCategories!.length,
