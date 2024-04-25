@@ -1,4 +1,4 @@
-import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/categories/categories_tab_states.dart';
+import 'package:e_commerce/ui/screens/tabs/categories_tab/cubits/categories/categories_tab_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
