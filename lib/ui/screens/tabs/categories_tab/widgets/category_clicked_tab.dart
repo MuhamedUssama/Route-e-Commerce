@@ -26,7 +26,7 @@ class CustomCategoryTabClick extends StatelessWidget {
                 children: [
                   Container(
                     height: height * 0.8,
-                    width: 4,
+                    width: 6,
                     decoration: BoxDecoration(
                       color: AppColors.primaryolor,
                       borderRadius: BorderRadius.circular(50),
@@ -36,7 +36,7 @@ class CustomCategoryTabClick extends StatelessWidget {
                     categoryName,
                     style: const TextStyle(
                       color: AppColors.primaryolor,
-                      fontSize: 22,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                     textAlign: TextAlign.center,

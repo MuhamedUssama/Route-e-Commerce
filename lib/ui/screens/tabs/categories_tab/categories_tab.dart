@@ -19,7 +19,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
     'Emma',
     'Frank',
     'Grace',
-    'Henry',
+    'Henry Potter',
     'Isabel',
     'Jack'
   ];
@@ -33,7 +33,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
       child: Row(
         children: [
           Expanded(
-            flex: 35,
+            flex: 4,
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.primaryolor.withOpacity(0.08),
@@ -65,10 +65,11 @@ class _CategoriesTabState extends State<CategoriesTab> {
             ),
           ),
           const Expanded(
-              flex: 65,
-              child: Column(
-                children: [],
-              )),
+            flex: 6,
+            child: Column(
+              children: [],
+            ),
+          ),
         ],
       ),
     );
