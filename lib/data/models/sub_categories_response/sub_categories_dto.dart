@@ -1,4 +1,4 @@
-import 'package:e_commerce/domain/models/sun_categories/sub_categories.dart';
+import 'package:e_commerce/domain/models/sub_categories/sub_categories.dart';
 
 class SubCategoriesDto {
   SubCategoriesDto({
