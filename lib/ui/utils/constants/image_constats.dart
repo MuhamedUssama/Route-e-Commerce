@@ -8,4 +8,7 @@ abstract class ImagesBath {
   static const String subCategoryImage = "${baseUrl}subCategory1.jpg";
   static const String subCategoryAdvertisement =
       "${baseUrl}subCategoryAdvertisement.png";
+  static const String carouselSlider1 = "${baseUrl}CarouselSlider1.png";
+  static const String carouselSlider2 = "${baseUrl}CarouselSlider2.png";
+  static const String carouselSlider3 = "${baseUrl}CarouselSlider3.png";
 }
