@@ -15,10 +15,14 @@ class ProductDataSourceImpl implements ProductsDataSource {
   Future<List<Product>?> getProducts({
     ProductSort? sortBy,
     String? subCategoryId,
+    String? categoryId,
+    String? brandId,
   }) async {
     var response = await apiManager.getAllProducts(
       sort: sortBy,
       subCategoryId: subCategoryId,
+      categoryId: categoryId,
+      brandId: brandId,
     );
     var prouductResponse =
         response.data?.map((productDto) => productDto.toProduct()).toList();

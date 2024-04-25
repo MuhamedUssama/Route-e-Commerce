@@ -1,4 +1,6 @@
 import 'package:e_commerce/di/di.dart';
+import 'package:e_commerce/domain/models/brands/brands.dart';
+import 'package:e_commerce/domain/models/categories/category.dart';
 import 'package:e_commerce/domain/models/sub_categories/sub_categories.dart';
 import 'package:e_commerce/ui/screens/products/products_by/product_catalog_view_model.dart';
 import 'package:e_commerce/ui/widgets/custom_product_widget.dart';
@@ -14,6 +16,8 @@ class ProductsCatalog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var subCategory = ModalRoute.of(context)?.settings.arguments as SubCategory;
+    var categories = ModalRoute.of(context)?.settings.arguments as Category?;
+    var brand = ModalRoute.of(context)?.settings.arguments as Brand?;
     viewModel.loadProducts(subCategory);
 
     return Scaffold(

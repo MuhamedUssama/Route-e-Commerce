@@ -29,8 +29,12 @@ class ApiManager {
     return brandsResponce;
   }
 
-  Future<ProductResponse> getAllProducts(
-      {ProductSort? sort, String? subCategoryId}) async {
+  Future<ProductResponse> getAllProducts({
+    ProductSort? sort,
+    String? subCategoryId,
+    String? categoryId,
+    String? brandId,
+  }) async {
     Map<String, dynamic> params = {};
     if (sort != null) {
       params["sort"] = sort.value;
@@ -39,6 +43,15 @@ class ApiManager {
     if (subCategoryId != null) {
       params["subcategory"] = subCategoryId;
     }
+
+    if (categoryId != null) {
+      params["category[in]"] = categoryId;
+    }
+
+    if (brandId != null) {
+      params["brand"] = brandId;
+    }
+
     Uri url = Uri.https(baseUrl, "/api/v1/products", params);
     http.Response response = await http.get(url);
     var json = jsonDecode(response.body);
