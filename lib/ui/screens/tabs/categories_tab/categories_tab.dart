@@ -1,10 +1,12 @@
 import 'package:e_commerce/di/di.dart';
 import 'package:e_commerce/ui/screens/tabs/categories_tab/cubits/categories/categories_tab_states.dart';
 import 'package:e_commerce/ui/screens/tabs/categories_tab/cubits/categories/categories_tab_view_model.dart';
+import 'package:e_commerce/ui/screens/tabs/categories_tab/cubits/sub_categories/sub_categories_on_category_view_model.dart';
 import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'cubits/sub_categories/sub_categories_on_category_states.dart';
 import 'widgets/category_clicked_tab.dart';
 
 class CategoriesTab extends StatefulWidget {
@@ -17,6 +19,9 @@ class CategoriesTab extends StatefulWidget {
 class _CategoriesTabState extends State<CategoriesTab> {
   CategoriesTabViewModel categoriesViewModel =
       getIt.get<CategoriesTabViewModel>();
+
+  SubCategoriesOnCategoryViewModel subCategoriesViewModel =
+      getIt.get<SubCategoriesOnCategoryViewModel>();
 
   @override
   void initState() {
@@ -43,8 +48,8 @@ class _CategoriesTabState extends State<CategoriesTab> {
                       "Something went worng, please try again"),
                 );
               } else if (state is SuccessState) {
-                return Expanded(
-                  flex: 4,
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.36,
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.primaryolor.withOpacity(0.08),
@@ -63,8 +68,13 @@ class _CategoriesTabState extends State<CategoriesTab> {
                                 setState(() {
                                   if (index == selectedIndex) {
                                     selectedIndex = 0;
+                                    subCategoriesViewModel
+                                        .getSubCategoriesOnCategory(null);
                                   } else {
                                     selectedIndex = index;
+                                    subCategoriesViewModel
+                                        .getSubCategoriesOnCategory(
+                                            state.category![index].id);
                                   }
                                 });
                               },
@@ -81,11 +91,43 @@ class _CategoriesTabState extends State<CategoriesTab> {
               }
             },
           ),
-          const Expanded(
-            flex: 6,
-            child: Column(
-              children: [],
-            ),
+          BlocBuilder(
+            bloc: subCategoriesViewModel,
+            builder: (context, state) {
+              if (state is SubCategoriesLoadingState) {
+                return SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.55,
+                    child: const Center(child: CircularProgressIndicator()));
+              } else if (state is SubCategoriesErrorState) {
+                return Center(
+                  child: Text(state.errorMessage ??
+                      "Something went worng, please try again"),
+                );
+              } else if (state is SubCategoriesSuccessState) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.55,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            return Text(
+                              state.subCategories![index].name ?? "",
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 24),
+                            );
+                          },
+                          itemCount: state.subCategories!.length,
+                          scrollDirection: Axis.vertical,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                return const SizedBox();
+              }
+            },
           ),
         ],
       ),
