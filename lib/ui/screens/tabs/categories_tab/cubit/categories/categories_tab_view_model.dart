@@ -1,8 +1,8 @@
-import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/categories_tab_states.dart';
+import 'package:e_commerce/ui/screens/tabs/categories_tab/cubit/sub_categories/categories_tab_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../../domain/use_cases/get_categories_usecase.dart';
+import '../../../../../../domain/use_cases/get_categories_usecase.dart';
 
 @injectable
 class CategoriesTabViewModel extends Cubit<CategoriesTabStates> {
@@ -11,7 +11,7 @@ class CategoriesTabViewModel extends Cubit<CategoriesTabStates> {
   @factoryMethod
   CategoriesTabViewModel(this.getCategoriesUseCase) : super(LoadingState());
 
-  void initPage() async {
+  void getCategories() async {
     emit(LoadingState());
 
     try {

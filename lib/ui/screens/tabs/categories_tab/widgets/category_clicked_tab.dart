@@ -16,7 +16,7 @@ class CustomCategoryTabClick extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Container(
-      height: isClicked ? height * 0.1 : height * 0.06,
+      height: isClicked ? height * 0.1 : height * 0.075,
       color: isClicked ? Colors.white : AppColors.primaryolor.withOpacity(0),
       child: TextButton(
         onPressed: onClick,
@@ -32,14 +32,17 @@ class CustomCategoryTabClick extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                  Text(
-                    categoryName,
-                    style: const TextStyle(
-                      color: AppColors.primaryolor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: Text(
+                      categoryName,
+                      style: const TextStyle(
+                        color: AppColors.primaryolor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ],
               )

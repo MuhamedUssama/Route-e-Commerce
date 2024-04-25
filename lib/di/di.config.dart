@@ -20,14 +20,16 @@ import '../data/data_source_impl/category_data_source_impl.dart' as _i9;
 import '../data/data_source_impl/products_data_source_impl.dart' as _i16;
 import '../data/repository_impl/brands_repository_impl.dart' as _i7;
 import '../data/repository_impl/category_repository_impl.dart' as _i11;
-import '../data/repository_impl/product_repository_impl.dart' as _i18;
+import '../data/repository_impl/product_repository_impl.dart' as _i19;
 import '../domain/repository/brand_repository_contract.dart' as _i6;
 import '../domain/repository/category_repository_contract.dart' as _i10;
-import '../domain/repository/product_repository_contract.dart' as _i17;
+import '../domain/repository/product_repository_contract.dart' as _i18;
 import '../domain/use_cases/get_brands_usecase.dart' as _i12;
 import '../domain/use_cases/get_categories_usecase.dart' as _i13;
-import '../domain/use_cases/get_most_selling_products_usecase.dart' as _i19;
-import '../ui/screens/tabs/home_tab/home_tab_view_model.dart' as _i20;
+import '../domain/use_cases/get_most_selling_products_usecase.dart' as _i20;
+import '../ui/screens/tabs/categories_tab/cubit/sub_categories/categories_tab_view_model.dart'
+    as _i17;
+import '../ui/screens/tabs/home_tab/home_tab_view_model.dart' as _i21;
 import '../ui/screens/tabs/main_screen_view_model.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -57,15 +59,17 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i14.MainScreenViewModel>(() => _i14.MainScreenViewModel());
     gh.factory<_i15.ProductsDataSource>(
         () => _i16.ProductDataSourceImpl(gh<_i3.ApiManager>()));
-    gh.factory<_i17.ProductRepositoryContract>(
-        () => _i18.ProductRepositoryImpl(gh<_i15.ProductsDataSource>()));
-    gh.factory<_i19.GetMostSellingProductsUseCase>(() =>
-        _i19.GetMostSellingProductsUseCase(
-            gh<_i17.ProductRepositoryContract>()));
-    gh.factory<_i20.HomeTabViewModel>(() => _i20.HomeTabViewModel(
+    gh.factory<_i17.CategoriesTabViewModel>(
+        () => _i17.CategoriesTabViewModel(gh<_i13.GetCategoriesUseCase>()));
+    gh.factory<_i18.ProductRepositoryContract>(
+        () => _i19.ProductRepositoryImpl(gh<_i15.ProductsDataSource>()));
+    gh.factory<_i20.GetMostSellingProductsUseCase>(() =>
+        _i20.GetMostSellingProductsUseCase(
+            gh<_i18.ProductRepositoryContract>()));
+    gh.factory<_i21.HomeTabViewModel>(() => _i21.HomeTabViewModel(
           gh<_i13.GetCategoriesUseCase>(),
           gh<_i12.GetBrandsUseCase>(),
-          gh<_i19.GetMostSellingProductsUseCase>(),
+          gh<_i20.GetMostSellingProductsUseCase>(),
         ));
     return this;
   }
