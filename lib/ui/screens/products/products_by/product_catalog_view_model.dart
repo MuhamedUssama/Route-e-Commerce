@@ -1,5 +1,3 @@
-import 'package:e_commerce/domain/models/brands/brands.dart';
-import 'package:e_commerce/domain/models/categories/category.dart';
 import 'package:e_commerce/domain/models/products/products.dart';
 import 'package:e_commerce/domain/models/sub_categories/sub_categories.dart';
 import 'package:e_commerce/domain/use_cases/get_products_catalog.dart';
