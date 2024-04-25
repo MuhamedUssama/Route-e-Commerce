@@ -1,4 +1,5 @@
 import 'package:e_commerce/domain/models/sub_categories/sub_categories.dart';
+import 'package:e_commerce/ui/screens/products/products_by/products_catalog.dart';
 import 'package:e_commerce/ui/utils/constants/image_constats.dart';
 import 'package:e_commerce/ui/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,13 @@ class CustomSubCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ProductsCatalog.routeName,
+          arguments: subCategory,
+        );
+      },
       child: SizedBox(
         width: 80,
         child: Column(
