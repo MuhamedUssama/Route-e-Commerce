@@ -11,17 +11,11 @@ class ProductRepositoryImpl implements ProductRepositoryContract {
   ProductRepositoryImpl(this.productsDataSource);
 
   @override
-  Future<List<Product>?> getProducts({
-    ProductSort? sortedBy,
-    String? subCategoryId,
-    String? categoryId,
-    String? brandId,
-  }) {
+  Future<List<Product>?> getProducts(
+      {ProductSort? sortedBy, String? subCategoryId}) {
     return productsDataSource.getProducts(
-      sortBy: sortedBy,
-      subCategoryId: subCategoryId,
-      categoryId: categoryId,
-      brandId: brandId,
+      sortedBy,
+      subCategoryId,
     );
   }
 }

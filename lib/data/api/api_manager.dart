@@ -44,14 +44,6 @@ class ApiManager {
       params["subcategory"] = subCategoryId;
     }
 
-    if (categoryId != null) {
-      params["category[in]"] = categoryId;
-    }
-
-    if (brandId != null) {
-      params["brand"] = brandId;
-    }
-
     Uri url = Uri.https(baseUrl, "/api/v1/products", params);
     http.Response response = await http.get(url);
     var json = jsonDecode(response.body);

@@ -1,3 +1,5 @@
+import 'package:e_commerce/domain/models/brands/brands.dart';
+import 'package:e_commerce/domain/models/categories/category.dart';
 import 'package:e_commerce/domain/models/products/products.dart';
 import 'package:e_commerce/domain/models/sub_categories/sub_categories.dart';
 import 'package:e_commerce/domain/use_cases/get_products_catalog.dart';
@@ -11,10 +13,10 @@ class ProductsCatalogViewModel extends Cubit<ProductsCatalogStates> {
   @factoryMethod
   ProductsCatalogViewModel(this.productsCatalog) : super(LoadingState());
 
-  void loadProducts(SubCategory subCategory) async {
+  void loadProducts(SubCategory? subCategory) async {
     emit(LoadingState());
     try {
-      var products = await productsCatalog.invoke(subCategory.id);
+      var products = await productsCatalog.invoke(subCategory?.id);
       emit(SuccessState(products));
     } catch (e) {
       emit(ErrorState(e.toString()));

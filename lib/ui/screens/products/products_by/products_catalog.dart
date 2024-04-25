@@ -16,8 +16,7 @@ class ProductsCatalog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var subCategory = ModalRoute.of(context)?.settings.arguments as SubCategory;
-    var categories = ModalRoute.of(context)?.settings.arguments as Category?;
-    var brand = ModalRoute.of(context)?.settings.arguments as Brand?;
+
     viewModel.loadProducts(subCategory);
 
     return Scaffold(

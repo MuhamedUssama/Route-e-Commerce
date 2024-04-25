@@ -9,16 +9,8 @@ class GetProductsCatalogUseCase {
   @factoryMethod
   GetProductsCatalogUseCase(this.productRepositoryContract);
 
-  Future<List<Product>?> invoke(
-    String? subCategoryId,
-    String? categoryId,
-    String? brandId,
-  ) {
+  Future<List<Product>?> invoke(String? subCategoryId) {
     return productRepositoryContract.getProducts(
-      sortedBy: ProductSort.mostSelling,
-      subCategoryId: subCategoryId,
-      categoryId: categoryId,
-      brandId: brandId,
-    );
+        sortedBy: ProductSort.mostSelling, subCategoryId: subCategoryId);
   }
 }

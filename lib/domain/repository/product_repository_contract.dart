@@ -1,12 +1,8 @@
 import 'package:e_commerce/domain/models/products/products.dart';
 
 abstract class ProductRepositoryContract {
-  Future<List<Product>?> getProducts({
-    ProductSort? sortedBy,
-    String? subCategoryId,
-    String? categoryId,
-    String? brandId,
-  });
+  Future<List<Product>?> getProducts(
+      {ProductSort? sortedBy, String? subCategoryId});
 }
 
 enum ProductSort {
