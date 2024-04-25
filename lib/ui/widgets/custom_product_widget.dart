@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class CustomProductWidget extends StatelessWidget {
   final Product product;
+
   const CustomProductWidget({super.key, required this.product});
 
   String truncateTitle(String title) {
@@ -19,10 +20,10 @@ class CustomProductWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 260,
-      height: 280,
+      width: 260, // 260
+      height: 280, // 280
       child: Container(
-        width: double.infinity,
+        width: 280,
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
