@@ -9,32 +9,35 @@ class CustomSubCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 80,
-      child: Column(
-        children: [
-          Container(
-            height: 80,
-            width: 80,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              image: const DecorationImage(
-                image: AssetImage(ImagesBath.subCategoryImage),
-                fit: BoxFit.fill,
+    return InkWell(
+      onTap: () {},
+      child: SizedBox(
+        width: 80,
+        child: Column(
+          children: [
+            Container(
+              height: 80,
+              width: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: const DecorationImage(
+                  image: AssetImage(ImagesBath.subCategoryImage),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            subCategory.name ?? "",
-            style: const TextStyle(
-              color: AppColors.primaryolor,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              overflow: TextOverflow.ellipsis,
+            const SizedBox(height: 8),
+            Text(
+              subCategory.name ?? "",
+              style: const TextStyle(
+                color: AppColors.primaryolor,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
