@@ -11,7 +11,9 @@ class ProductRepositoryImpl implements ProductRepositoryContract {
   ProductRepositoryImpl(this.productsDataSource);
 
   @override
-  Future<List<Product>?> getProducts({ProductSort? sortedBy}) {
-    return productsDataSource.getProducts(sortBy: sortedBy);
+  Future<List<Product>?> getProducts(
+      {ProductSort? sortedBy, String? subCategoryId}) {
+    return productsDataSource.getProducts(
+        sortBy: sortedBy, subCategoryId: subCategoryId);
   }
 }
