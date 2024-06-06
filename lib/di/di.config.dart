@@ -17,36 +17,38 @@ import '../data/data_source/category_data_source_contract.dart' as _i8;
 import '../data/data_source/products_data_source.dart' as _i15;
 import '../data/data_source/sign_up_data_source.dart' as _i17;
 import '../data/data_source/sub_categories_on_category_data_source.dart'
-    as _i19;
+    as _i21;
 import '../data/data_source_impl/brands_data_source_impl.dart' as _i5;
 import '../data/data_source_impl/category_data_source_impl.dart' as _i9;
 import '../data/data_source_impl/products_data_source_impl.dart' as _i16;
 import '../data/data_source_impl/sign_up_data_source_impl.dart' as _i18;
 import '../data/data_source_impl/sub_categories_on_category_data_source_impl.dart'
-    as _i20;
+    as _i22;
 import '../data/repository_impl/brands_repository_impl.dart' as _i7;
 import '../data/repository_impl/category_repository_impl.dart' as _i11;
-import '../data/repository_impl/product_repository_impl.dart' as _i26;
+import '../data/repository_impl/product_repository_impl.dart' as _i28;
+import '../data/repository_impl/sign_up_repository_impl.dart' as _i20;
 import '../data/repository_impl/sub_categories_on_category_repository_impl.dart'
-    as _i22;
+    as _i24;
 import '../domain/repository/brand_repository_contract.dart' as _i6;
 import '../domain/repository/category_repository_contract.dart' as _i10;
-import '../domain/repository/product_repository_contract.dart' as _i25;
+import '../domain/repository/product_repository_contract.dart' as _i27;
+import '../domain/repository/sign_up_repository.dart' as _i19;
 import '../domain/repository/sub_categories_on_category_repository_contract.dart'
-    as _i21;
+    as _i23;
 import '../domain/use_cases/get_brands_usecase.dart' as _i12;
 import '../domain/use_cases/get_categories_usecase.dart' as _i13;
-import '../domain/use_cases/get_most_selling_products_usecase.dart' as _i28;
-import '../domain/use_cases/get_products_catalog.dart' as _i29;
+import '../domain/use_cases/get_most_selling_products_usecase.dart' as _i30;
+import '../domain/use_cases/get_products_catalog.dart' as _i31;
 import '../domain/use_cases/get_sub_categories_on_category_usecase.dart'
-    as _i24;
+    as _i26;
 import '../ui/screens/products/products_by/product_catalog_view_model.dart'
-    as _i31;
+    as _i33;
 import '../ui/screens/tabs/categories_tab/cubits/categories/categories_tab_view_model.dart'
-    as _i23;
+    as _i25;
 import '../ui/screens/tabs/categories_tab/cubits/sub_categories/sub_categories_on_category_view_model.dart'
-    as _i27;
-import '../ui/screens/tabs/home_tab/home_tab_view_model.dart' as _i30;
+    as _i29;
+import '../ui/screens/tabs/home_tab/home_tab_view_model.dart' as _i32;
 import '../ui/screens/tabs/main_screen_view_model.dart' as _i14;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -78,33 +80,35 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i16.ProductDataSourceImpl(gh<_i3.ApiManager>()));
     gh.factory<_i17.SignUpDataSource>(
         () => _i18.SignUpDataSourceImpl(gh<_i3.ApiManager>()));
-    gh.factory<_i19.SubCategoriesOnCategoryDataSource>(
-        () => _i20.SubCategoriesOnCategoryDataSourceImpl(gh<_i3.ApiManager>()));
-    gh.factory<_i21.SubCategoriesOnCategoryRepositoryContract>(() =>
-        _i22.SubCategoriesOnCategoryRepoImpl(
-            gh<_i19.SubCategoriesOnCategoryDataSource>()));
-    gh.factory<_i23.CategoriesTabViewModel>(
-        () => _i23.CategoriesTabViewModel(gh<_i13.GetCategoriesUseCase>()));
-    gh.factory<_i24.GetSubCategoriesOnCategoryUsecase>(() =>
-        _i24.GetSubCategoriesOnCategoryUsecase(
-            gh<_i21.SubCategoriesOnCategoryRepositoryContract>()));
-    gh.factory<_i25.ProductRepositoryContract>(
-        () => _i26.ProductRepositoryImpl(gh<_i15.ProductsDataSource>()));
-    gh.factory<_i27.SubCategoriesOnCategoryViewModel>(() =>
-        _i27.SubCategoriesOnCategoryViewModel(
-            gh<_i24.GetSubCategoriesOnCategoryUsecase>()));
-    gh.factory<_i28.GetMostSellingProductsUseCase>(() =>
-        _i28.GetMostSellingProductsUseCase(
-            gh<_i25.ProductRepositoryContract>()));
-    gh.factory<_i29.GetProductsCatalogUseCase>(() =>
-        _i29.GetProductsCatalogUseCase(gh<_i25.ProductRepositoryContract>()));
-    gh.factory<_i30.HomeTabViewModel>(() => _i30.HomeTabViewModel(
+    gh.factory<_i19.SignUpRepository>(
+        () => _i20.SignUpRepositoryImpl(gh<_i17.SignUpDataSource>()));
+    gh.factory<_i21.SubCategoriesOnCategoryDataSource>(
+        () => _i22.SubCategoriesOnCategoryDataSourceImpl(gh<_i3.ApiManager>()));
+    gh.factory<_i23.SubCategoriesOnCategoryRepositoryContract>(() =>
+        _i24.SubCategoriesOnCategoryRepoImpl(
+            gh<_i21.SubCategoriesOnCategoryDataSource>()));
+    gh.factory<_i25.CategoriesTabViewModel>(
+        () => _i25.CategoriesTabViewModel(gh<_i13.GetCategoriesUseCase>()));
+    gh.factory<_i26.GetSubCategoriesOnCategoryUsecase>(() =>
+        _i26.GetSubCategoriesOnCategoryUsecase(
+            gh<_i23.SubCategoriesOnCategoryRepositoryContract>()));
+    gh.factory<_i27.ProductRepositoryContract>(
+        () => _i28.ProductRepositoryImpl(gh<_i15.ProductsDataSource>()));
+    gh.factory<_i29.SubCategoriesOnCategoryViewModel>(() =>
+        _i29.SubCategoriesOnCategoryViewModel(
+            gh<_i26.GetSubCategoriesOnCategoryUsecase>()));
+    gh.factory<_i30.GetMostSellingProductsUseCase>(() =>
+        _i30.GetMostSellingProductsUseCase(
+            gh<_i27.ProductRepositoryContract>()));
+    gh.factory<_i31.GetProductsCatalogUseCase>(() =>
+        _i31.GetProductsCatalogUseCase(gh<_i27.ProductRepositoryContract>()));
+    gh.factory<_i32.HomeTabViewModel>(() => _i32.HomeTabViewModel(
           gh<_i13.GetCategoriesUseCase>(),
           gh<_i12.GetBrandsUseCase>(),
-          gh<_i28.GetMostSellingProductsUseCase>(),
+          gh<_i30.GetMostSellingProductsUseCase>(),
         ));
-    gh.factory<_i31.ProductsCatalogViewModel>(() =>
-        _i31.ProductsCatalogViewModel(gh<_i29.GetProductsCatalogUseCase>()));
+    gh.factory<_i33.ProductsCatalogViewModel>(() =>
+        _i33.ProductsCatalogViewModel(gh<_i31.GetProductsCatalogUseCase>()));
     return this;
   }
 }
