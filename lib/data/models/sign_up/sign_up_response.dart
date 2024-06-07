@@ -1,6 +1,10 @@
 import '../../../domain/models/sign_up/sign_up_dto.dart';
 import 'user_sign_up_response.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'sign_up_response.g.dart';
+
+@JsonSerializable()
 class SignUpResponse {
   String? message;
   UserSignUpResponse? user;
@@ -12,32 +16,10 @@ class SignUpResponse {
     this.token,
   });
 
-  SignUpResponse.fromJson(dynamic json) {
-    message = json['message'];
-    user =
-        json['user'] != null ? UserSignUpResponse.fromJson(json['user']) : null;
-    token = json['token'];
-  }
+  factory SignUpResponse.fromJson(Map<String, dynamic> json) =>
+      _$SignUpResponseFromJson(json);
 
-  SignUpResponse copyWith({
-    String? message,
-    UserSignUpResponse? user,
-    String? token,
-  }) =>
-      SignUpResponse(
-        message: message ?? this.message,
-        user: user ?? this.user,
-        token: token ?? this.token,
-      );
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['message'] = message;
-    if (user != null) {
-      map['user'] = user?.toJson();
-    }
-    map['token'] = token;
-    return map;
-  }
+  Map<String, dynamic> toJson() => _$SignUpResponseToJson(this);
 
   SignUpDto toSignUpDto() {
     return SignUpDto(
