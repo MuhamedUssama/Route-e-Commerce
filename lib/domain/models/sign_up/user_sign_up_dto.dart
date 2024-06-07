@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'user_sign_up_dto.g.dart';
+
+@JsonSerializable()
 class UserSignUpDto {
   String? name;
   String? email;
@@ -9,27 +14,8 @@ class UserSignUpDto {
     this.role,
   });
 
-  UserSignUpDto.fromJson(dynamic json) {
-    name = json['name'];
-    email = json['email'];
-    role = json['role'];
-  }
+  factory UserSignUpDto.fromJson(Map<String, dynamic> json) =>
+      _$UserSignUpDtoFromJson(json);
 
-  UserSignUpDto copyWith({
-    String? name,
-    String? email,
-    String? role,
-  }) =>
-      UserSignUpDto(
-        name: name ?? this.name,
-        email: email ?? this.email,
-        role: role ?? this.role,
-      );
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = name;
-    map['email'] = email;
-    map['role'] = role;
-    return map;
-  }
+  Map<String, dynamic> toJson() => _$UserSignUpDtoToJson(this);
 }

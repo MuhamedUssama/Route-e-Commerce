@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   contentMessage: "You are now member of our family",
                   posActionName: "Ok",
                   posActionFunction: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const LoginScreen(),
@@ -246,7 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const LoginScreen(),
