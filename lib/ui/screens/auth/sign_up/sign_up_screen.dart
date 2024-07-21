@@ -178,7 +178,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       CustomTextFormField(
                         controller: viewModel.rePasswordController,
                         hintText: 'enter your confirm password',
-                        isObscureText: viewModel.isObscurePassword,
+                        isObscureText: viewModel.isObscurePasswordConfirm,
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
                             return "Please enter your confirm password";
@@ -189,14 +189,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         suffixIcon: InkWell(
                           onTap: () {
                             setState(() {
-                              if (viewModel.isObscurePassword) {
-                                viewModel.isObscurePassword = false;
+                              if (viewModel.isObscurePasswordConfirm) {
+                                viewModel.isObscurePasswordConfirm = false;
                               } else {
-                                viewModel.isObscurePassword = true;
+                                viewModel.isObscurePasswordConfirm = true;
                               }
                             });
                           },
-                          child: viewModel.isObscurePassword
+                          child: viewModel.isObscurePasswordConfirm
                               ? const Icon(Icons.visibility_off)
                               : const Icon(Icons.visibility),
                         ),
