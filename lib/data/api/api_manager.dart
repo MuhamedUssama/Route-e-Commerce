@@ -1,5 +1,11 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
+import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+
+import 'package:e_commerce/domain/failures.dart';
 import 'package:e_commerce/data/models/brands_response/brands_response.dart';
 import 'package:e_commerce/data/models/categories_response/categories_response.dart';
 import 'package:e_commerce/data/models/product_response/product_response.dart';
@@ -7,8 +13,6 @@ import 'package:e_commerce/data/models/sign_up/sign_up_request_model.dart';
 import 'package:e_commerce/data/models/sign_up/sign_up_response.dart';
 import 'package:e_commerce/data/models/sub_categories_response/sub_categories_response.dart';
 import 'package:e_commerce/domain/repository/product_repository_contract.dart';
-import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
 
 @singleton
 @injectable
@@ -62,7 +66,7 @@ class ApiManager {
     return subCategoiesResponce;
   }
 
-  Future<SignUpResponse> signUp(
+  Future<Either<Failures, SignUpResponse>>? signUp(
     String name,
     String email,
     String password,
@@ -77,9 +81,23 @@ class ApiManager {
       rePassword: rePassword,
       phone: phone,
     );
-    http.Response response = await http.post(url, body: requestBody.toJson());
-    final json = jsonDecode(response.body);
-    SignUpResponse signUpResponse = SignUpResponse.fromJson(json);
-    return signUpResponse;
+
+    final List<ConnectivityResult> connectivityResult =
+        await (Connectivity().checkConnectivity());
+
+    if (connectivityResult.contains(ConnectivityResult.mobile) ||
+        connectivityResult.contains(ConnectivityResult.wifi)) {
+      http.Response response = await http.post(url, body: requestBody.toJson());
+      final json = jsonDecode(response.body);
+      SignUpResponse signUpResponse = SignUpResponse.fromJson(json);
+
+      if (signUpResponse.message == 'success') {
+        return Right(signUpResponse);
+      } else {
+        return Left(ServerExeption(errorMessage: signUpResponse.message));
+      }
+    } else {
+      return Left(NetworkExeption(errorMessage: 'No internet connection'));
+    }
   }
 }

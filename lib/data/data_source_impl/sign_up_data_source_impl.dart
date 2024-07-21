@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:e_commerce/data/api/api_manager.dart';
 import 'package:e_commerce/data/data_source/sign_up_data_source.dart';
+import 'package:e_commerce/domain/failures.dart';
 import 'package:e_commerce/domain/models/sign_up/sign_up_dto.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,10 +13,13 @@ class SignUpDataSourceImpl implements SignUpDataSource {
   SignUpDataSourceImpl(this.apiManager);
 
   @override
-  Future<SignUpDto> signup(String name, String email, String password,
-      String rePassword, String phone) async {
-    final response =
+  Future<Either<Failures, SignUpDto>>? signup(String name, String email,
+      String password, String rePassword, String phone) async {
+    final either =
         await apiManager.signUp(name, email, password, rePassword, phone);
-    return response.toSignUpDto();
+    return either!.fold(
+      (failure) => Left(ServerExeption(errorMessage: failure.errorMessage)),
+      (response) => Right(response.toSignUpDto()),
+    );
   }
 }
