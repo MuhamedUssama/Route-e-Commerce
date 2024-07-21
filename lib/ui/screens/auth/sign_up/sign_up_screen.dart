@@ -212,21 +212,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       viewModel.signUp();
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         AppColors.white,
                       ),
-                      padding: const MaterialStatePropertyAll(
+                      padding: const WidgetStatePropertyAll(
                         EdgeInsets.symmetric(
                           horizontal: 102.5,
                           vertical: 14,
                         ),
                       ),
-                      shape: MaterialStateProperty.all(
+                      shape: WidgetStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
-                      minimumSize: MaterialStateProperty.all(
+                      minimumSize: WidgetStateProperty.all(
                         Size(MediaQuery.of(context).size.width, 0.0),
                       ),
                     ),
