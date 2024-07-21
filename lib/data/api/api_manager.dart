@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce/data/models/login/login_request_model.dart';
+import 'package:e_commerce/data/models/login/login_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
@@ -97,6 +99,32 @@ class ApiManager {
         return Right(signUpResponse);
       } else {
         return Left(ServerExeption(errorMessage: signUpResponse.message));
+      }
+    } else {
+      return Left(NetworkExeption(errorMessage: 'No internet connection'));
+    }
+  }
+
+  Future<Either<Failures, LoginResponse>>? login(
+      String email, String password) async {
+    Uri url = Uri.https(baseUrl, '/api/v1/auth/signin');
+
+    LoginRequestModel requestBody = LoginRequestModel(
+      email: email,
+      password: password,
+    );
+
+    bool isConnected = await newtworkConnection.isConnected();
+
+    if (isConnected) {
+      http.Response response = await http.post(url, body: requestBody.toJson());
+      final json = jsonDecode(response.body);
+      LoginResponse loginResponse = LoginResponse.fromJson(json);
+
+      if (loginResponse.message == 'success') {
+        return Right(loginResponse);
+      } else {
+        return Left(ServerExeption(errorMessage: loginResponse.message));
       }
     } else {
       return Left(NetworkExeption(errorMessage: 'No internet connection'));
