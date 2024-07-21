@@ -31,4 +31,16 @@ abstract class AppTextStyle {
     fontSize: 18,
     fontWeight: FontWeight.w400,
   );
+
+  static const TextStyle firstLineOfLoginScreen = TextStyle(
+    color: AppColors.white,
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle secondLineOfLoginScreen = TextStyle(
+    color: AppColors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
 }
