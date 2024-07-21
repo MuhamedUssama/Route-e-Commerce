@@ -26,19 +26,19 @@ class SignUpViewModel extends Cubit<SignUpStates> {
 
     if (formKey.currentState?.validate() == true) {
       emit(SignUpLoadingState());
-    }
 
-    try {
-      final user = await signUpUseCase.invoke(
-        nameController.text,
-        emailController.text,
-        passwordController.text,
-        rePasswordController.text,
-        phoneController.text,
-      );
-      emit(SignUpSuccessState(user));
-    } catch (error) {
-      emit(SignUpErrorState(error.toString()));
+      try {
+        final user = await signUpUseCase.invoke(
+          nameController.text,
+          emailController.text,
+          passwordController.text,
+          rePasswordController.text,
+          phoneController.text,
+        );
+        emit(SignUpSuccessState(user));
+      } catch (error) {
+        emit(SignUpErrorState(error.toString()));
+      }
     }
   }
 }
