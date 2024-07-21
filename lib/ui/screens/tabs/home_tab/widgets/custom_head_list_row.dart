@@ -21,7 +21,7 @@ class CustomHeadListRow extends StatelessWidget {
         TextButton(
           onPressed: () {},
           style: ButtonStyle(
-            textStyle: MaterialStateProperty.all<TextStyle>(
+            textStyle: WidgetStateProperty.all<TextStyle>(
               const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,

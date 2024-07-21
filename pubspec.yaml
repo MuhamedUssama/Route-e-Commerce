@@ -41,6 +41,9 @@ dependencies:
   get_it:
   flutter_screenutil: ^5.9.0
   carousel_slider: ^4.2.1
+  # Automatically generate code for converting to and from JSON by annotating Dart classes
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
 
 dev_dependencies:
   flutter_test:
@@ -55,7 +58,8 @@ dev_dependencies:
   # add the generator to your dev_dependencies
   injectable_generator:
   # add build runner if not already added
-  build_runner:
+  #A build system for Dart code generation and modular compilation
+  build_runner: ^2.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
