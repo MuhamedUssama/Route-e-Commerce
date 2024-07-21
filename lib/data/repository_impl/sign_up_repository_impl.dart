@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/data/data_source/sign_up_data_source.dart';
-import 'package:e_commerce/domain/failures.dart';
+import 'package:e_commerce/helpers/failures.dart';
 import 'package:e_commerce/domain/models/sign_up/sign_up_dto.dart';
 import 'package:e_commerce/domain/repository/sign_up_repository.dart';
 import 'package:injectable/injectable.dart';

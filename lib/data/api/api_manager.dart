@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
-import 'package:e_commerce/domain/failures.dart';
+import 'package:e_commerce/helpers/failures.dart';
 import 'package:e_commerce/data/models/brands_response/brands_response.dart';
 import 'package:e_commerce/data/models/categories_response/categories_response.dart';
 import 'package:e_commerce/data/models/product_response/product_response.dart';
