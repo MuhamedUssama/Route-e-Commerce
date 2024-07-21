@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:e_commerce/helpers/failures.dart';
+import 'package:e_commerce/helpers/network_connection.dart';
 import 'package:e_commerce/data/models/brands_response/brands_response.dart';
 import 'package:e_commerce/data/models/categories_response/categories_response.dart';
 import 'package:e_commerce/data/models/product_response/product_response.dart';
@@ -17,7 +17,11 @@ import 'package:e_commerce/domain/repository/product_repository_contract.dart';
 @singleton
 @injectable
 class ApiManager {
+  NewtworkConnections newtworkConnection;
   static const String baseUrl = "ecommerce.routemisr.com";
+
+  @factoryMethod
+  ApiManager(this.newtworkConnection);
 
   Future<CategoriesResponse> getAllCategories() async {
     Uri url = Uri.https(baseUrl, "api/v1/categories");
@@ -82,11 +86,9 @@ class ApiManager {
       phone: phone,
     );
 
-    final List<ConnectivityResult> connectivityResult =
-        await (Connectivity().checkConnectivity());
+    bool isConnected = await newtworkConnection.isConnected();
 
-    if (connectivityResult.contains(ConnectivityResult.mobile) ||
-        connectivityResult.contains(ConnectivityResult.wifi)) {
+    if (isConnected) {
       http.Response response = await http.post(url, body: requestBody.toJson());
       final json = jsonDecode(response.body);
       SignUpResponse signUpResponse = SignUpResponse.fromJson(json);
