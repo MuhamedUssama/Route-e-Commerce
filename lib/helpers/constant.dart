@@ -1,3 +1,3 @@
 class AppConstants {
-  String token = 'Token';
+  static const String token = 'Token';
 }

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/data/models/login/login_request_model.dart';
 import 'package:e_commerce/data/models/login/login_response.dart';
+import 'package:e_commerce/helpers/cashe.dart';
+import 'package:e_commerce/helpers/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
@@ -122,6 +124,10 @@ class ApiManager {
       LoginResponse loginResponse = LoginResponse.fromJson(json);
 
       if (loginResponse.message == 'success') {
+        await SharedPreferencesHelper.setSecuredString(
+          key: AppConstants.token,
+          value: loginResponse.token ?? "",
+        );
         return Right(loginResponse);
       } else {
         return Left(ServerExeption(errorMessage: loginResponse.message));

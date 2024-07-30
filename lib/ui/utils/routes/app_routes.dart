@@ -6,7 +6,8 @@ import '../../screens/auth/sign_up/sign_up_screen.dart';
 import '../../screens/tabs/main_screen.dart';
 
 abstract class AppRoutes {
-  static const String initialRoute = SignUpScreen.routeName;
+  static const String initialRoute = LoginScreen.routeName;
+  static const String homeScreen = MainScreen.routeName;
   static Map<String, Widget Function(BuildContext)> routes = {
     MainScreen.routeName: (context) => const MainScreen(),
     ProductsCatalog.routeName: (context) => ProductsCatalog(),
