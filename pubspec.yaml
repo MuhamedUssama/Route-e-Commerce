@@ -46,6 +46,8 @@ dependencies:
   # Automatically generate code for converting to and from JSON by annotating Dart classes
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
+  shared_preferences: ^2.2.3
+  flutter_secure_storage: ^4.2.1
 
 dev_dependencies:
   flutter_test:
